@@ -23,9 +23,12 @@ AB_OTA_PARTITIONS := \
     dtbo \
     vendor_boot \
     system \
+    system_dlkm \
     system_ext \
     product \
     vendor \
+    vendor_dlkm \
+    odm_dlkm \
     vbmeta \
     vbmeta_system \
     vbmeta_vendor
@@ -96,19 +99,25 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
 
 # Partitions (Dynamic)
 BOARD_SUPER_PARTITION_GROUPS := mediatek_dynamic_partitions
-BOARD_MEDIATEK_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor
+BOARD_MEDIATEK_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_dlkm system_ext product vendor vendor_dlkm odm_dlkm
 BOARD_MEDIATEK_DYNAMIC_PARTITIONS_SIZE := 7511998464
 
 -include vendor/lineage/config/BoardConfigReservedSize.mk
 
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_ODM_DLKMIMAGE_FILE_SYSTEM_TYPE := erofs
 
 TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
+TARGET_COPY_OUT_ODM_DLKM := odm_dlkm
 
 TARGET_USERIMAGES_USE_F2FS := true
 
