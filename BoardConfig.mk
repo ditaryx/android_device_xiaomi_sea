@@ -90,6 +90,17 @@ BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)-kernel/dtbo.img
 
 BOARD_KERNEL_SEPARATED_DTBO := true
 
+# Enable DLKM partitions
+BOARD_USES_VENDOR_DLKMIMAGE := true
+BOARD_USES_SYSTEM_DLKMIMAGE := true
+
+# Specify where the modules are so the build can pack them
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard device/xiaomi/sea/modules/vendor/*.ko)
+BOARD_SYSTEM_KERNEL_MODULES := $(wildcard device/xiaomi/sea/modules/system/*.ko)
+
+# This creates the "Order of Loading"
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(BOARD_VENDOR_KERNEL_MODULES)
+
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_SUPER_PARTITION_SIZE := 7516192768
